@@ -18,4 +18,4 @@ RUN chown -R 1001:1001 /app /tests run_server.sh requirements.txt
 
 USER app
 
-EXPOSE 8080
+EXPOSE 9001

@@ -4,7 +4,7 @@ from uuid import uuid4
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from app.utils.logger import AppLogger
-from app.routers.routes import api
+from app.routers.routes import appl
 
 app = FastAPI()
 
@@ -33,7 +33,7 @@ app.add_middleware(
 )
 
 
-app.include_router(api)
+app.include_router(appl)
 
 if __name__ == "__main__":
     uvicorn.run(app, port=8080, log_level="info")

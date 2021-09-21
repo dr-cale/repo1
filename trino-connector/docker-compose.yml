@@ -7,7 +7,7 @@ services:
     container_name: solver-trino-connector
     command: sh ./run_server.sh
     ports:
-      - 8080:8080
+      - 9001:8080
     networks:
       - solver_develop
     environment:
