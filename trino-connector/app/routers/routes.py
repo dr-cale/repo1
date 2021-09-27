@@ -1,5 +1,3 @@
-# Endpoints, you can create multiple files if is necessary and include them into main.py
-
 from fastapi import APIRouter
 
 from app.api.services import Basic
@@ -20,7 +18,3 @@ def root():
 @appl.post("/fetch_specific")
 def root(querymodel: QueryModel):
     return Basic.get_specific_table(querymodel)
-
-##################################
-##### ---- EXEC METHODS ---- #####
-##################################

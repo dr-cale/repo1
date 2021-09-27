@@ -1,8 +1,10 @@
-# Business logic, please delete example
 from starlette.responses import JSONResponse
 from app.database.daos import ExampleQuery
 from app.api.models import QueryModel
+from app.utils.config import BasicConfig
 import trino
+
+config = BasicConfig()
 
 class Basic:
     def __init__(self):
@@ -11,14 +13,15 @@ class Basic:
     def get_data(self, uid):
         return self.c.get_record(id='id')
 
+    # Configuration picked up from ENV variables
     def get_all_tables():
         try:
             conn = trino.dbapi.connect(
-                host='dev-solverai.thingsolver.com',
-                port=8081,
-                user='DraganChe',
-                catalog='hive',
-                schema='che',
+                host = config.trino_host,
+                port = config.trino_port,
+                user = config.trino_user,
+                catalog = config.trino_catalog,
+                schema = config.trino_schema,
                 http_scheme='http',
                 verify=False
             )
@@ -39,12 +42,13 @@ class Basic:
                     }
                 )
 
+    # QueryModel data passed in the body of the request
     def get_specific_table(querymodel: QueryModel):
         try:
             conn = trino.dbapi.connect(
-                host='dev-solverai.thingsolver.com',
-                port=8081,
-                user='DraganChe',
+                host = config.trino_host,
+                port = config.trino_port,
+                user = config.trino_user,
                 catalog=querymodel.trinoCatalog,
                 schema=querymodel.trinoSchema,
                 http_scheme='http',

@@ -11,7 +11,11 @@ services:
     networks:
       - solver_develop
     environment:
-      YOUR_ENV: ${YOUR_ENV}
+      - TRINO_HOST=${TRINO_HOST}
+      - TRINO_PORT=${TRINO_PORT}
+      - TRINO_USER=${TRINO_USER}
+      - TRINO_CATALOG=${TRINO_CATALOG}
+      - TRINO_SCHEMA=${TRINO_SCHEMA}
 networks:
   solver_develop:
     external: true
